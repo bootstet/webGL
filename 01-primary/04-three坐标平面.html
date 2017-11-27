@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>坐标平面</title>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script src="../js/three.js"></script>
+    <script>
+
+        var renderer;
+        function initTHree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRender({
+                anitalias: true
+            });
+            renderer.setSize(width,height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+        }
+    </script>
+</head>
+
+<body onload="threeStart();">
+    <div id="canvas-frame"></div>
+</body>
+
+</html>

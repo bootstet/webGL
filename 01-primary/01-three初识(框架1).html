@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>初始问题</title>
+	<script src="../js/three.js"></script>
+</head>
+<body>
+	<script>
+		// 场景
+		var scene = new THREE.Scene();
+		// 相机
+		var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+		// 渲染
+		var renderer = new THREE.WebGLRenderer();
+
+		renderer.setSize(window.innerWidth,window.innerHeight);// 设置渲染器窗口大小
+		
+		document.body.appendChild(renderer.domElement);
+		var geometry = new THREE.CubeGeometry(1,1,1);  // 几何体
+		var material = new THREE.MeshBasicMaterial({color:0x00ff00});
+		var cube = new THREE.Mesh(geometry,material);
+		scene.add(cube);
+		camera.position.z = 5;
+		function render(){
+			requestAnimationFrame(render);
+			cube.rotation.x += 0.1;
+			cube.rotation.y += 0.1;
+			renderer.render(scene,camera);
+			//渲染函数的原型如下：
+			// render( scene, camera, renderTarget, forceClear )
+			// 各个参数的意义是：
+			// scene：前面定义的场景
+			// camera：前面定义的相机
+			// renderTarget：渲染的目标，默认是渲染到前面定义的render变量中
+			// forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。
+		}
+		render();
+	</script>
+</body>
+</html>
